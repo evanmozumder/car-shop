@@ -11,6 +11,12 @@ const Home = () => {
       <Banner></Banner>
       <HomeProducts></HomeProducts>
       <Reviews></Reviews>
+      <h1>Latest Arival</h1>
+      <img
+        style={{ maxWidth: "100%" }}
+        src="https://i.ibb.co/HqvQVny/grey-metallic-jeep-with-blue-stripe-it.jpg"
+        alt=""
+      />
     </div>
   );
 };

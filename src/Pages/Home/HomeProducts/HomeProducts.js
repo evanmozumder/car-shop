@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Product from "../Product/Product";
 
@@ -14,6 +14,14 @@ const HomeProducts = () => {
   }, []);
   return (
     <Container>
+      <Typography
+        sx={{ color: "error.main", my: 5, fontWeight: "bold" }}
+        variant="h4"
+        gutterBottom
+        component="div"
+      >
+        Premium Cars
+      </Typography>
       <Grid container spacing={2}>
         {cars.map((car) => (
           <Product car={car} key={car._id} />

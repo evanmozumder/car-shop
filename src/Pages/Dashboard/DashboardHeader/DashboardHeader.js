@@ -76,7 +76,7 @@ const DashboardHeader = () => {
                 style={{ textDecoration: "none", color: "white" }}
                 to={`${url}/pay`}
               >
-                <Button color="inherit">My Orders</Button>
+                <Button color="inherit">Pay</Button>
               </NavLink>
               <NavLink
                 style={{ textDecoration: "none", color: "white" }}

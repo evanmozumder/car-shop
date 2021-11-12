@@ -17,8 +17,9 @@ initializeFirebase();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [authError, setAuthError] = useState("");
+  const [authError, setAuthError] = useState("Pending");
   const [admin, setAdmin] = useState(false);
+  const [orderStatus, setOrderStatus] = useState("");
 
   const auth = getAuth();
 
@@ -145,6 +146,8 @@ const useFirebase = () => {
     loginUser,
     authError,
     signInWithGoogle,
+    orderStatus,
+    setOrderStatus,
   };
 };
 

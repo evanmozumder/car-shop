@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Header = () => {
@@ -25,8 +25,16 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Car Shop
+            <Link style={{ textDecoration: "none", color: "white" }} to="/">
+              Car Shop
+            </Link>
           </Typography>
+          <NavLink
+            style={{ textDecoration: "none", color: "white" }}
+            to="/products"
+          >
+            <Button color="inherit">Explore</Button>
+          </NavLink>
           {user?.email ? (
             <Box>
               <NavLink

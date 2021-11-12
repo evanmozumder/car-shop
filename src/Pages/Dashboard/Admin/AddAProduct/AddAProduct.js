@@ -1,9 +1,11 @@
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 
 const AddAProduct = () => {
   const [product, setProduct] = useState({});
+  const history = useHistory();
   // collecting product data
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -27,7 +29,10 @@ const AddAProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.insertedId) {
+          alert("product added successfully");
+          history.replace("/products");
+        }
       });
     // console.log("product", product);
   };

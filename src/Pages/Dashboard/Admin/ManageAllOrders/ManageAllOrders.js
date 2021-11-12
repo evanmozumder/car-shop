@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 
 const ManageAllOrders = () => {
-  const { isLoading } = useAuth();
+  const { isLoading, setOrderStatus } = useAuth();
   const [allOrders, setAllOrders] = useState([]);
   // getting all order
   useEffect(() => {
@@ -37,6 +37,12 @@ const ManageAllOrders = () => {
         });
     }
   };
+
+  // shipping an order
+  const handleShipped = (id) => {
+    setOrderStatus("Shipped");
+  };
+
   if (isLoading) {
     return <CircularProgress />;
   }
@@ -51,8 +57,16 @@ const ManageAllOrders = () => {
             <Button
               onClick={() => handleRemove(order.productId)}
               variant="contained"
+              color="error"
             >
               Remove
+            </Button>
+            <Button
+              sx={{ mx: 5 }}
+              onClick={() => handleShipped(order.productId)}
+              variant="contained"
+            >
+              Shipped
             </Button>
           </div>
         ))}

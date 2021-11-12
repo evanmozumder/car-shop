@@ -14,7 +14,7 @@ import { useHistory, useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
 const Purchase = () => {
-  const { user, isLoading } = useAuth();
+  const { user, isLoading, setOrderStatus } = useAuth();
   const { productId } = useParams();
   const [details, setDetails] = useState({});
 
@@ -51,6 +51,7 @@ const Purchase = () => {
     purchaseInfo.productName = name;
     purchaseInfo.productPrice = price;
     purchaseInfo.productImg = img;
+    purchaseInfo.status = "Pending";
 
     // console.log("purchase info", purchaseInfo);
     e.preventDefault();
@@ -65,6 +66,7 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
+          setOrderStatus("Pending");
           alert("purchase successfull");
           history.replace("/");
         }
@@ -85,7 +87,7 @@ const Purchase = () => {
     return <CircularProgress />;
   }
   return (
-    <Container>
+    <Container sx={{ my: 10 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <Card sx={{ maxWidth: 345 }}>
@@ -109,6 +111,7 @@ const Purchase = () => {
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>
+          <h2>Please Give Your Info</h2>
           <form style={{ width: "75%" }} onSubmit={handleSubmit}>
             <TextField
               onBlur={handleOnBlur}
@@ -142,7 +145,7 @@ const Purchase = () => {
               variant="standard"
             />
             <br />
-            <Button type="submit" variant="contained">
+            <Button sx={{ my: 5 }} type="submit" variant="contained">
               Purchase
             </Button>
           </form>

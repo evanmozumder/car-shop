@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 
 const MyOrders = () => {
-  const { user } = useAuth();
+  const { user, orderStatus } = useAuth();
+  // console.log("order", orderStatus);
   const [myOrders, setMyOrders] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:4000/myOrders?email=${user.email}`)
@@ -41,13 +42,17 @@ const MyOrders = () => {
     <div>
       {myOrders.map((order) => (
         <div key={order._id}>
-          <h2>{order.productName}</h2>
-          <h6>Price: {order.productPrice}</h6>
+          <h2>Car Name: {order.productName}</h2>
+          <h4>Price: {order.productPrice}</h4>
           <Button
             onClick={() => handleRemove(order.productId)}
             variant="contained"
+            color="error"
           >
             Remove
+          </Button>
+          <Button sx={{ mx: 5 }} variant="contained" disabled>
+            {orderStatus}
           </Button>
         </div>
       ))}

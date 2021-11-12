@@ -8,6 +8,7 @@ import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import Register from "./Pages/Login/Register/Register";
 import Products from "./Pages/Products/Products";
 import Purchase from "./Pages/Purchase/Purchase";
+import Footer from "./Pages/Shared/Footer/Footer";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Dashboard></Dashboard>
             </PrivateRoute>
           </Switch>
+          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
     </div>
