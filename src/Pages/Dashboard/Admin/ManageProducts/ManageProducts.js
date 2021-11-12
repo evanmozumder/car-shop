@@ -1,16 +1,26 @@
-import { Button, CircularProgress } from "@mui/material";
+import { CircularProgress, Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
+import Product from "../../../Home/Product/Product";
 
 const ManageProducts = () => {
   const { isLoading } = useAuth();
-  const [allOrders, setAllOrders] = useState([]);
-  // getting all order
-  useEffect(() => {
-    fetch("http://localhost:4000/allOrders")
+  // const [allProducts, setAllProducts] = useState([]);
+  const [cars, setCars] = useState([]);
+
+  // getting all products
+  /* useEffect(() => {
+    fetch("https://gentle-bastion-31769.herokuapp.com/allOrders")
       .then((res) => res.json())
       .then((data) => {
         setAllOrders(data);
+      });
+  }, []); */
+  useEffect(() => {
+    fetch("https://gentle-bastion-31769.herokuapp.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setCars(data);
       });
   }, []);
 
@@ -22,11 +32,11 @@ const ManageProducts = () => {
     );
     if (choice) {
       // removing products from UI
-      const restOrders = allOrders.filter((order) => order.productId !== id);
-      setAllOrders(restOrders);
+      const restProducts = cars.filter((car) => car._id !== id);
+      setCars(restProducts);
 
       // removing products from server
-      fetch(`http://localhost:4000/product/${id}`, {
+      fetch(`https://gentle-bastion-31769.herokuapp.com/product/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -40,7 +50,7 @@ const ManageProducts = () => {
   if (isLoading) {
     return <CircularProgress />;
   }
-  return (
+  /* return (
     <div>
       <div>
         {allOrders.map((order) => (
@@ -60,6 +70,18 @@ const ManageProducts = () => {
       </div>
     </div>
   );
-};
+}; */
 
+  return (
+    <div>
+      <Container>
+        <Grid container spacing={2}>
+          {cars.map((car) => (
+            <Product car={car} key={car._id} handleRemove={handleRemove} />
+          ))}
+        </Grid>
+      </Container>
+    </div>
+  );
+};
 export default ManageProducts;

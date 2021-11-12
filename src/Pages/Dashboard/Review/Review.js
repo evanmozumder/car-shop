@@ -18,7 +18,7 @@ const Review = () => {
     review.name = user.displayName;
     review.email = user.email;
 
-    fetch("http://localhost:4000/review", {
+    fetch("https://gentle-bastion-31769.herokuapp.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

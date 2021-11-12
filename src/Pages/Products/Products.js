@@ -5,8 +5,10 @@ import Header from "../Shared/Header/Header";
 
 const Products = () => {
   const [cars, setCars] = useState([]);
+
+  // getting all products
   useEffect(() => {
-    fetch("http://localhost:4000/products")
+    fetch("https://gentle-bastion-31769.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         setCars(data);

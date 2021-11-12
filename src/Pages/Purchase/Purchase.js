@@ -22,7 +22,7 @@ const Purchase = () => {
 
   // finding selected product info
   useEffect(() => {
-    fetch(`http://localhost:4000/purchase/${productId}`)
+    fetch(`https://gentle-bastion-31769.herokuapp.com/purchase/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log("details", data);
@@ -56,7 +56,7 @@ const Purchase = () => {
     // console.log("purchase info", purchaseInfo);
     e.preventDefault();
     // console.log("purchased", purchaseInfo);
-    fetch("http://localhost:4000/purchase", {
+    fetch("https://gentle-bastion-31769.herokuapp.com/purchase", {
       method: "POST",
       headers: {
         "content-type": "application/json",

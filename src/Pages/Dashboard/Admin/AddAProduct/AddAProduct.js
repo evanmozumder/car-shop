@@ -20,7 +20,7 @@ const AddAProduct = () => {
     e.preventDefault();
 
     // sending new product info to the databse
-    fetch("http://localhost:4000/product", {
+    fetch("https://gentle-bastion-31769.herokuapp.com/product", {
       method: "POST",
       headers: {
         "content-type": "application/json",

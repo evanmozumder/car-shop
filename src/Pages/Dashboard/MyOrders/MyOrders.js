@@ -7,7 +7,9 @@ const MyOrders = () => {
   // console.log("order", orderStatus);
   const [myOrders, setMyOrders] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:4000/myOrders?email=${user.email}`)
+    fetch(
+      `https://gentle-bastion-31769.herokuapp.com/myOrders?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log("data", data);
@@ -26,7 +28,7 @@ const MyOrders = () => {
       setMyOrders(restOrders);
 
       // removing products from server
-      fetch(`http://localhost:4000/product/${id}`, {
+      fetch(`https://gentle-bastion-31769.herokuapp.com/product/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

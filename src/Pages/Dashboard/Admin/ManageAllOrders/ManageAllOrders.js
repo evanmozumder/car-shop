@@ -7,7 +7,7 @@ const ManageAllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
   // getting all order
   useEffect(() => {
-    fetch("http://localhost:4000/allOrders")
+    fetch("https://gentle-bastion-31769.herokuapp.com/allOrders")
       .then((res) => res.json())
       .then((data) => {
         setAllOrders(data);
@@ -25,8 +25,8 @@ const ManageAllOrders = () => {
       const restOrders = allOrders.filter((order) => order.productId !== id);
       setAllOrders(restOrders);
 
-      // removing products from server
-      fetch(`http://localhost:4000/product/${id}`, {
+      // removing orders from server
+      fetch(`https://gentle-bastion-31769.herokuapp.com/order/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

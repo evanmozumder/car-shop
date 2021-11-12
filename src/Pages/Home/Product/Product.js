@@ -8,9 +8,10 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
-const Product = ({ car }) => {
+const Product = ({ car, handleRemove }) => {
+  const { path, url } = useRouteMatch();
   const { _id, name, price, img, description, review } = car;
   return (
     <Grid item xs={12} md={4}>
@@ -33,9 +34,19 @@ const Product = ({ car }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Link style={{ textDecoration: "none" }} to={`/purchase/${_id}`}>
-            <Button variant="contained">Buy Now</Button>
-          </Link>
+          {path === "/dashboard/manageProducts" ? (
+            <>
+              <Button onClick={() => handleRemove(_id)} variant="contained">
+                Remove
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link style={{ textDecoration: "none" }} to={`/purchase/${_id}`}>
+                <Button variant="contained">Buy Now</Button>
+              </Link>
+            </>
+          )}
         </CardActions>
       </Card>
     </Grid>
