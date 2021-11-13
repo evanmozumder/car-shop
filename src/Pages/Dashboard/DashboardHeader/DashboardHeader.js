@@ -13,7 +13,7 @@ const DashboardHeader = () => {
   const { path, url } = useRouteMatch();
   const { user, logout, isLoading, admin } = useAuth();
 
-  //   console.log("usr", user.roll);
+  // console.log("usr", admin);
 
   if (isLoading) {
     return <CircularProgress />;

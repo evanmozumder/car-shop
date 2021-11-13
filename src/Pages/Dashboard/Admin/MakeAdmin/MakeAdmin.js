@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import useAuth from "../../../../hooks/useAuth";
 
 const MakeAdmin = () => {
-  const { isLoading } = useAuth();
+  const { isLoading, setAdmin } = useAuth();
   const [adminEmail, setAdminEmail] = useState("");
   const handleOnBlur = (e) => {
     setAdminEmail(e.target.value);
@@ -22,6 +22,7 @@ const MakeAdmin = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
+          setAdmin(true);
           alert("made an admin");
         }
       });

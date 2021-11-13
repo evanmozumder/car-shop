@@ -66,7 +66,7 @@ const Purchase = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          setOrderStatus("Pending");
+          // setOrderStatus("Pending");
           alert("purchase successfull");
           history.replace("/");
         }

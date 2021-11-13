@@ -51,12 +51,20 @@ const Header = () => {
               </Button>
             </Box>
           ) : (
-            <NavLink
-              style={{ textDecoration: "none", color: "white" }}
-              to="/login"
-            >
-              <Button color="inherit">Login</Button>
-            </NavLink>
+            <>
+              <NavLink
+                style={{ textDecoration: "none", color: "white" }}
+                to="/login"
+              >
+                <Button color="inherit">Login</Button>
+              </NavLink>
+              <NavLink
+                style={{ textDecoration: "none", color: "white" }}
+                to="/register"
+              >
+                <Button color="inherit">Register</Button>
+              </NavLink>
+            </>
           )}
         </Toolbar>
       </AppBar>

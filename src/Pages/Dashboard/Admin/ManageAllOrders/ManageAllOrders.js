@@ -39,8 +39,21 @@ const ManageAllOrders = () => {
   };
 
   // shipping an order
-  const handleShipped = (id) => {
-    setOrderStatus("Shipped");
+  const handleShipped = (id, order) => {
+    order.status = "Shipped";
+    fetch(`https://gentle-bastion-31769.herokuapp.com/order/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          alert("status changed to shipped successfully");
+        }
+      });
   };
 
   if (isLoading) {
@@ -63,10 +76,10 @@ const ManageAllOrders = () => {
             </Button>
             <Button
               sx={{ mx: 5 }}
-              onClick={() => handleShipped(order.productId)}
+              onClick={() => handleShipped(order._id, order)}
               variant="contained"
             >
-              Shipped
+              {order?.status === "Pending" ? "Pending" : "Shipped"}
             </Button>
           </div>
         ))}

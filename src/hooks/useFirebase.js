@@ -17,7 +17,7 @@ initializeFirebase();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [authError, setAuthError] = useState("Pending");
+  const [authError, setAuthError] = useState("");
   const [admin, setAdmin] = useState(false);
   const [orderStatus, setOrderStatus] = useState("");
 
@@ -76,6 +76,7 @@ const useFirebase = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        setUser(userCredential.user);
         const destination = location?.state?.from || "/home";
         history.replace(destination);
         setAuthError("");
@@ -141,6 +142,7 @@ const useFirebase = () => {
     user,
     isLoading,
     admin,
+    setAdmin,
     registerUser,
     logout,
     loginUser,
